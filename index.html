@@ -1,0 +1,82 @@
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMETRON</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/gametronicon.png" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">GAMETRON</a>
+      <ul>
+        <li><a href="index.html" class="active">home</a></li>
+        <li><a href="#">contact</a></li>
+        <li><a href="#">dashboard</a></li>
+      </ul>
+    </header>
+    <section>
+      <img src="img/stars.png" id="stars">
+      <img src="img/moon.png" id="moon">
+      <img src="img/mountains_behind.png" id="mountain_behind">
+      <h2 id="text">Online: <span id="lat"></span></h2>
+      <a href="#" id="btn">explore</a>
+      <a href="#" id="btn2">invite</a>
+      <img src="img/mountains_front.png" id="mountain_front">
+    </section>
+    <div class="sec">
+      <h2>GAMETRON</h2>
+      <p>Gametron serwer stworzony z myślą o graczach. Możesz na nim znaleźć znajomych i nie 
+        tylko a w szczególności się dobrze bawić. 
+        Na Gametronie znajdziesz nie tylko graczy minecraft 
+        ale też among us, grand theft auto 5, fortnite i nie tylko. </p>
+    </div>
+    
+    
+    
+  </body>
+
+  <script>
+    const api_url = "https://discord.com/api/guilds/942491011177934929/widget.json"
+
+    async function getISS() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        const { presence_count } = data;
+
+        document.getElementById('lat').textContent = presence_count;
+        
+      }
+
+      getISS()
+
+    function sendMessage2() {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/998227314548678656/nL4easmStG0lvF-urLE0q9jxf6sJTc8M7N97yMU4kd0rS_weKHDPy0741jGo3Cj6RDii");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "My Webhook Name",
+        avatar_url: "",
+        content: "The message to send"
+      }
+
+      request.send(JSON.stringify(params));
+    }
+    function sendMessage1() {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/998227314548678656/nL4easmStG0lvF-urLE0q9jxf6sJTc8M7N97yMU4kd0rS_weKHDPy0741jGo3Cj6RDii");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "AGATKA",
+        avatar_url: "https://cdn.discordapp.com/attachments/830426230577823794/998229098092572672/Screenshot_2022-03-21-11-32-58-21_50ef9f5a0f3fc24b6f0ffc8843167fe4.jpg",
+        content: "CZEŚĆ MAM NA IMIE AGATKA I JESTEM GŁUPIA"
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</html>
